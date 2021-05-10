@@ -60,8 +60,10 @@ export default class LevelScene extends Phaser.Scene {
 			text.maxWidth = 160;
 			this.texts.push(text);
 
-			// let debug = this.add.rectangle(text.x, text.y, text.maxWidth, 20, 0xFF0000, 0.5);
-			// debug.setOrigin(0.5+0.5*dx, 0.5+0.5*dy);
+			let debug = this.add.rectangle(text.x+80*dx, text.y+60*dy, text.maxWidth+80, 55+Math.abs(dy)*60, 0xFFFFFF, 0.0);
+			debug.setOrigin(0.5+0.5*dx, 0.5+0.5*dy);
+			debug.setInteractive({ useHandCursor: true })
+				.on('pointerup', () => { this.onSelect(i); });
 		}
 
 		this.alternatives = [null, null, null, null];
